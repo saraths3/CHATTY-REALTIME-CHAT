@@ -2,4 +2,4 @@
 *.pyc
 __pycache__/
 db.sqlite3
-get-docket.sh
+get-docker.sh
