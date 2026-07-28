@@ -1,11 +1,56 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign In - Just Chat</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/signin.css' %}">
 </head>
 <body>
-    <h2><center>Signin</center></h2>
+    <div class="auth-wrapper">
+        <header class="brand-header">
+            <span class="brand-badge">JUST CHAT</span>
+            <h1>Welcome back.</h1>
+            <p class="subtitle">Enter your credentials to access your messages.</p>
+        </header>
+
+        <form method="post" class="editorial-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-error non-field">
+                    {{ form.non_field_errors.0 }}
+                </div>
+            {% endif %}
+
+            <div class="input-line">
+                <input type="email" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" required placeholder=" " autocomplete="off">
+                <label for="{{ form.username.id_for_label }}">Email Address</label>
+                {% if form.username.errors %}
+                    <span class="field-error">{{ form.username.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="input-line">
+                <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" required placeholder=" ">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {% if form.password.errors %}
+                    <span class="field-error">{{ form.password.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-arrow">
+                    <span>Sign In</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </form>
+
+        <footer class="auth-footer">
+            <span>New here?</span> <a href="{% url 'signup' %}">Create an account</a>
+        </footer>
+    </div>
 </body>
 </html>

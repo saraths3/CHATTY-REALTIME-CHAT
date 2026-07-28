@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: #050507;
+    color: #f4f4f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-layout {
+    width: 100%;
+    max-width: 680px;
+    min-height: 100vh;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   NAVBAR & PROFILE DROPDOWN
+   ========================================================================== */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    position: relative;
+}
+
+.brand-link { text-decoration: none; }
+.brand-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: #a1a1aa;
+    text-transform: uppercase;
+}
+
+.app-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: #a1a1aa;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover { color: #ffffff; }
+
+.nav-btn {
+    color: #050507;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.nav-btn:hover { background: #e4e4e7; }
+
+/* Profile Trigger Button */
+.profile-menu-container {
+    position: relative;
+}
+
+.profile-trigger {
+    background: transparent;
+    border: 1px solid #27272a;
+    border-radius: 100px;
+    padding: 4px 12px 4px 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #f4f4f5;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.profile-trigger:hover {
+    border-color: #52525b;
+    background: #09090b;
+}
+
+.avatar-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #050507;
+    font-size: 0.78rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-handle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e4e4e7;
+}
+
+.chevron-icon { color: #71717a; }
+
+/* Profile Dropdown Panel */
+.profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: 44px;
+    width: 240px;
+    background: #09090b;
+    border: 1px solid #27272a;
+    border-radius: 16px;
+    padding: 12px;
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.profile-dropdown.active {
+    display: flex;
+}
+
+.dropdown-header {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.email-sub {
+    font-size: 0.78rem;
+    color: #71717a;
+    margin-top: 2px;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: #18181b;
+    margin: 8px 0;
+}
+
+.dropdown-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dropdown-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-links a:hover {
+    background: #18181b;
+    color: #ffffff;
+}
+
+.dropdown-signout {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #f87171;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+.dropdown-signout:hover { background: rgba(248, 113, 113, 0.1); }
+
+/* Room Section Extra Styling */
+.rooms-section {
+    margin-top: 36px;
+}
+
+.rooms-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.room-count-badge {
+    font-size: 0.75rem;
+    color: #71717a;
+    font-weight: 600;
+}
+
+.room-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.room-topic {
+    font-size: 0.8rem;
+    color: #71717a;
+    font-weight: 400;
+}
+
+.room-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: #71717a;
+}
+
+.online-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.empty-state {
+    padding: 32px 0;
+    text-align: left;
+    color: #71717a;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #a1a1aa;
+    margin-bottom: 4px;
+}
+
+.empty-sub {
+    font-size: 0.85rem;
+    color: #52525b;
+}
+
+/* ==========================================================================
+   DASHBOARD / MAIN CONTENT
+   ========================================================================== */
+
+.app-main { flex: 1; }
+
+.page-header { margin-bottom: 36px; }
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.page-header .subtitle {
+    color: #71717a;
+    font-size: 0.92rem;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: #09090b;
+    border: 1px solid #18181b;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    color: #71717a;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Form Styling */
+.editorial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.input-line {
+    position: relative;
+    width: 100%;
+}
+
+.input-line input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #27272a;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.25s ease;
+}
+
+.input-line label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: #71717a;
+    font-size: 0.95rem;
+    font-weight: 400;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+
+.input-line input:focus ~ label,
+.input-line input:not(:placeholder-shown) ~ label {
+    top: -18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #d4d4d8;
+}
+
+.input-line input:focus { border-bottom-color: #f4f4f5; }
+
+.btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 22px;
+    background: #ffffff;
+    color: #050507;
+    border: none;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-arrow:hover {
+    background: #e4e4e7;
+    transform: translateY(-1px);
+}
+
+.app-footer {
+    margin-top: auto;
+    padding-top: 48px;
+    font-size: 0.8rem;
+    color: #3f3f46;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (Screen width <= 600px)
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    body { background: #000000; }
+
+    .app-layout { padding: 24px 18px; }
+
+    .user-handle { display: none; } /* Hide handle text on small screens */
+
+    .stats-grid {
+        grid-template-columns: 1fr; /* Stack stat cards vertically */
+    }
+
+    .btn-arrow {
+        border-radius: 12px;
+    }
+}

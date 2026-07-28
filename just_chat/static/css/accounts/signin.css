@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ==========================================================================
+   DESKTOP: Aesthetic Dark Minimalist (Editorial Underline Layout)
+   ========================================================================== */
+
+body {
+    background-color: #050507;
+    color: #f4f4f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 460px;
+}
+
+/* Header & Typography */
+.brand-header {
+    margin-bottom: 36px;
+}
+
+.brand-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: #a1a1aa; /* Subtle zinc accent */
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.brand-header h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.brand-header .subtitle {
+    color: #71717a;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* Form Structure */
+.editorial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* Floating Underline Input Lines */
+.input-line {
+    position: relative;
+    width: 100%;
+}
+
+.input-line input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #27272a; /* Clean thin border */
+    padding: 12px 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.25s ease;
+}
+
+.input-line label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: #71717a;
+    font-size: 0.95rem;
+    font-weight: 400;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active Floating Label Transition */
+.input-line input:focus ~ label,
+.input-line input:not(:placeholder-shown) ~ label {
+    top: -18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #d4d4d8;
+}
+
+.input-line input:focus {
+    border-bottom-color: #f4f4f5; /* Crisp white underline focus */
+}
+
+/* Minimalist Primary Action Button */
+.form-actions {
+    margin-top: 12px;
+}
+
+.btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 24px;
+    background: #ffffff;
+    color: #050507;
+    border: none;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+    transition: all 0.25s ease;
+}
+
+.btn-arrow:hover {
+    background: #e4e4e7;
+    box-shadow: 0 6px 24px rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.btn-arrow:active {
+    transform: translateY(0);
+}
+
+/* Error States */
+.field-error {
+    display: block;
+    color: #f87171;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+.form-error.non-field {
+    color: #f87171;
+    font-size: 0.88rem;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+/* Footer Link */
+.auth-footer {
+    margin-top: 40px;
+    font-size: 0.88rem;
+    color: #71717a;
+}
+
+.auth-footer a {
+    color: #f4f4f5;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #3f3f46;
+    margin-left: 6px;
+    padding-bottom: 1px;
+    transition: border-color 0.2s ease;
+}
+
+.auth-footer a:hover {
+    border-color: #ffffff;
+}
+
+/* ==========================================================================
+   MOBILE SCREEN (screen <= 600px): Completely Plain Full Screen
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    body {
+        background: #000000;
+        align-items: flex-start;
+        padding: 40px 24px;
+    }
+
+    .auth-wrapper {
+        max-width: 100%;
+    }
+
+    .brand-header h1 {
+        font-size: 2.25rem;
+    }
+
+    .btn-arrow {
+        border-radius: 12px;
+        box-shadow: none;
+    }
+}

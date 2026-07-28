@@ -1,11 +1,94 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up - Just Chat</title>
+    <link rel="stylesheet" href="{% static 'css/accounts/signin.css' %}">
 </head>
 <body>
-    <h2><center>Signup</center></h2>
+    <div class="auth-wrapper">
+        <header class="brand-header">
+            <span class="brand-badge">JUST CHAT</span>
+            <h1>Create account.</h1>
+            <p class="subtitle">Join Just Chat and connect instantly.</p>
+        </header>
+
+        <form method="post" class="editorial-form">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-error non-field">
+                    {{ form.non_field_errors.0 }}
+                </div>
+            {% endif %}
+
+            <!-- Full Name -->
+            <div class="input-line">
+                <input type="text" name="{{ form.full_name.name }}" id="{{ form.full_name.id_for_label }}" required placeholder=" " autocomplete="off" value="{{ form.full_name.value|default:'' }}">
+                <label for="{{ form.full_name.id_for_label }}">Full Name</label>
+                {% if form.full_name.errors %}
+                    <span class="field-error">{{ form.full_name.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <!-- Email Address -->
+            <div class="input-line">
+                <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" required placeholder=" " autocomplete="off" value="{{ form.email.value|default:'' }}">
+                <label for="{{ form.email.id_for_label }}">Email Address</label>
+                {% if form.email.errors %}
+                    <span class="field-error">{{ form.email.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <!-- Username -->
+            <div class="input-line">
+                <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" required placeholder=" " autocomplete="off" value="{{ form.username.value|default:'' }}">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {% if form.username.errors %}
+                    <span class="field-error">{{ form.username.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <!-- Phone Number -->
+            <div class="input-line">
+                <input type="text" name="{{ form.phone_number.name }}" id="{{ form.phone_number.id_for_label }}" required placeholder=" " autocomplete="off" value="{{ form.phone_number.value|default:'' }}">
+                <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                {% if form.phone_number.errors %}
+                    <span class="field-error">{{ form.phone_number.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <!-- Password 1 -->
+            <div class="input-line">
+                <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" required placeholder=" ">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {% if form.password1.errors %}
+                    <span class="field-error">{{ form.password1.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <!-- Password 2 -->
+            <div class="input-line">
+                <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" required placeholder=" ">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {% if form.password2.errors %}
+                    <span class="field-error">{{ form.password2.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-arrow">
+                    <span>Create Account</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </form>
+
+        <footer class="auth-footer">
+            <span>Already have an account?</span> <a href="{% url 'signin' %}">Sign In</a>
+        </footer>
+    </div>
 </body>
 </html>

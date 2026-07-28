@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Rooms - Just Chat{% endblock %}
+
+{% block content %}
+<section class="home-wrapper">
+    <!-- Header -->
+    <header class="page-header">
+        <span class="brand-badge">ROOMS</span>
+        <h1>Conversations.</h1>
+        <p class="subtitle">Join an existing room or create a new space in seconds.</p>
+    </header>
+
+    <!-- Create or Join Room Form -->
+    <form method="post" action="" class="editorial-form room-create-form">
+        {% csrf_token %}
+        <div class="input-line">
+            <input type="text" name="room_name" id="room_name" required placeholder=" " autocomplete="off">
+            <label for="room_name">Enter or Create Room Name</label>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn-arrow">
+                <span>Enter Room</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </form>
+
+    <!-- Active Rooms List -->
+    <div class="rooms-section">
+        <div class="rooms-header-row">
+            <span class="section-label">Active Spaces</span>
+            {% if rooms %}
+                <span class="room-count-badge">{{ rooms|length }} active</span>
+            {% endif %}
+        </div>
+
+        <ul class="room-list">
+            {% for room in rooms %}
+                <li class="room-item">
+                    <a href="" class="room-link">
+                        <div class="room-info">
+                            <span class="room-name"># {{ room.name }}</span>
+                            {% if room.topic %}
+                                <span class="room-topic">{{ room.topic }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="room-meta">
+                            <span class="online-indicator"></span>
+                            <span>{{ room.active_users_count|default:"0" }} online</span>
+                        </div>
+                    </a>
+                </li>
+            {% empty %}
+                <li class="empty-state">
+                    <p>No active rooms right now.</p>
+                    <span class="empty-sub">Type a room name above to start the first conversation.</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}
